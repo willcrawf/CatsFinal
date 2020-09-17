@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const catSchema = new mongoose.Schema({
     breed: {type: String, required: true, default: "mixed"},
-    pic: {type: String, required: true, default: "cat.jpg"},
+    pic: {type: String, required: true},
     name:{type: String, required: true,default: "cat"},
     gender:{type: String, required: true},
     age:{type: Number, required: true, default: '0'},

@@ -41,7 +41,7 @@ class CatForm extends Component {
 
             <div>
                 <label htmlFor="pic">Picture URL: </label>
-                <input name ='pic' type="text" className="active" pattern="^https ^http ^www [a-z][A-Z][0-9] .jpg$ .jpeg$ .png$ .gif$ {1,100}" value={this.state.formData.pic} onChange={this.handleChange}/>
+                <input name ='pic' type="text" className="active" value={this.state.formData.pic} onChange={this.handleChange}/>
             </div>
 
             <div>
