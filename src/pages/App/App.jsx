@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import CatForm from '../CatForm/CatForm';
 import CatsList from '../CatsList/CatsList';
+import EditCat from '../EditCat/EditCat';
 import Login from "../Login/Login";
 import Users from "../Users/Users";
 import authService from "../../services/authService";
@@ -17,6 +18,16 @@ class App extends Component {
     user: authService.getUser()
   };
 
+  handleUpdateCat = async updatedCatData => {
+    const updatedCat = await catAPI.update(updatedCatData);
+    const newCatsArray = this.state.cats.map(t =>
+      t._id === updatedCat._id ? updatedCat : t
+    );
+    this.setState(
+      { cats: newCatsArray },
+      () => this.props.history.push('/cats')
+    );
+  }
 
   handleDeleteCat = async id => {
     if (authService.getUser()) {
@@ -108,6 +119,17 @@ class App extends Component {
             handleDeleteCat = {this.handleDeleteCat}
             user={this.state.user}
           />
+        } />
+
+        <Route exact path='/edit' render={({ location }) =>
+          authService.getUser() ?
+            <EditCat
+              handleUpdateCat={this.handleUpdateCat}
+              location={location}
+              user={this.state.user}
+            />
+            :
+            <Redirect to='/login' />
         } />
       </>
     );

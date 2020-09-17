@@ -26,3 +26,12 @@ export function getAll() {
     }, {mode: "cors"})
     .then(res => res.json());
   }
+
+  export function update(cat) {
+    return fetch(`${BASE_URL}${cat._id}`, {
+        method: "PUT",
+        headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
+        body: JSON.stringify(cat)
+    }, {mode: "cors"})
+    .then(res => res.json());
+}
