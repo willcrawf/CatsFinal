@@ -6,7 +6,7 @@ function CatCard({ user, cat, handleDeleteCat }) {
         <>
             <div className="card">
                 <div className="card-image waves-effect waves-block waves-light">
-                    <img alt="cat" className="activator" src={cat.image ? cat.image : "https://www.cebodtelecom.com/wp-content/uploads/2014/09/related_post_no_available_image.png"} onClick={()=> {}}/>
+                    <img alt="cat" className="activator" src={cat.pic ? cat.pic : "https://www.cebodtelecom.com/wp-content/uploads/2014/09/related_post_no_available_image.png"} onClick={()=> {}}/>
                 </div>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">{cat.name}<i className="material-icons right"></i></span>
