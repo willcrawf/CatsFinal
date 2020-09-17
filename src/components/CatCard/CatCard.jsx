@@ -6,7 +6,7 @@ function CatCard({ user, cat, handleDeleteCat }) {
         <>
             <div className="card">
                 <div className="card-image waves-effect waves-block waves-light">
-                    <img alt="cat" className="activator" src={cat.pic} onClick={()=> {}}/>
+                    <img alt="cat" className="activator" src={cat.pic ? cat.pic : "https://www.cebodtelecom.com/wp-content/uploads/2014/09/related_post_no_available_image.png"} onClick={()=> {}}/>
                 </div>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">{cat.name}<i className="material-icons right"></i></span>
@@ -17,24 +17,26 @@ function CatCard({ user, cat, handleDeleteCat }) {
                     <h6>Breed: {cat.breed}</h6>
                     <div>Age:  {cat.age}</div>
                     <div>Gender: {cat.gender}</div>
+                    {user && (user._id === cat.addedBy._id) &&
                     <>
                     <button type="submit" className="btn red" onClick={() => handleDeleteCat(cat._id)}>
                         Delete Cat
                     </button>
-                    {/* Test */}
                     <Link 
                         className="btn yellow black-text"
                         to={{
                             pathname: '/edit',
                             state: {cat}
                         }}
-                    > <br></br>
+                    >
                         Edit Cat
                     </Link>
                     </>
+                    }
+
                 </div>
             </div>
-        </>
+            </>
     )
 }
 
