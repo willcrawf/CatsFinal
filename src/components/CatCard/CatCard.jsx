@@ -17,24 +17,26 @@ function CatCard({ user, cat, handleDeleteCat }) {
                     <h6>Breed: {cat.breed}</h6>
                     <div>Age:  {cat.age}</div>
                     <div>Gender: {cat.gender}</div>
+                    {user && (user._id === cat.addedBy._id) &&
                     <>
                     <button type="submit" className="btn red" onClick={() => handleDeleteCat(cat._id)}>
                         Delete Cat
                     </button>
-                    {/* Test */}
                     <Link 
                         className="btn yellow black-text"
                         to={{
                             pathname: '/edit',
                             state: {cat}
                         }}
-                    > <br></br>
+                    >
                         Edit Cat
                     </Link>
                     </>
+                    }
+
                 </div>
             </div>
-        </>
+            </>
     )
 }
 
