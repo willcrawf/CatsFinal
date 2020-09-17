@@ -9,6 +9,8 @@ const catsCtrl = require('../controllers/cats');
 router.use(require("../config/auth"));
 router.get('/', checkAuth, catsCtrl.index);
 router.post('/', checkAuth, catsCtrl.create);
+router.delete('/:id', checkAuth, catsCtrl.delete);
+
 function checkAuth(req, res, next) {
   if (req.user) return next();
   return res.status(401).json({msg: 'Not Authorized'});
